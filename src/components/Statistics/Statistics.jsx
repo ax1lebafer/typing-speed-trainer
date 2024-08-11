@@ -12,8 +12,12 @@ export function Statistics() {
 
   return (
     <div className={styles.statisticsWrapper}>
-      <p>WPM: {calculateWPM()}</p>
-      <p>Errors: {errors}</p>
+      <p className={styles.text}>
+        WPM: <span>{calculateWPM()}</span>
+      </p>
+      <p className={styles.text}>
+        Errors: <span>{errors}</span>
+      </p>
     </div>
   );
 }

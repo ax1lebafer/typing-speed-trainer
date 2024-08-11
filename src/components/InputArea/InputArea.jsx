@@ -19,8 +19,13 @@ export function InputArea() {
       dispatch(setStartTime(Date.now()));
     }
 
-    if (input[input.length - 1] !== text[input.length - 1]) {
-      dispatch(incrementErrors());
+    if (input.length > userInput.length) {
+      const lastChar = input[input.length - 1];
+      const correspondingChar = text[input.length - 1];
+
+      if (lastChar !== correspondingChar) {
+        dispatch(incrementErrors());
+      }
     }
 
     dispatch(setUserInput(input));
@@ -28,7 +33,6 @@ export function InputArea() {
 
   const handleReset = () => {
     dispatch(reset());
-    dispatch(setUserInput(""));
   };
 
   return (
@@ -42,7 +46,7 @@ export function InputArea() {
         className={styles.input}
       />
       <button onClick={handleReset} className={styles.button}>
-        Restart
+        <img className={styles.reset} src="./reset.svg" alt="reset" />
       </button>
     </div>
   );

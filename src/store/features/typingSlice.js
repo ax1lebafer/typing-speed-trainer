@@ -1,13 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
-import words from "russian-words";
+import { faker } from "@faker-js/faker/locale/ru";
 
 const generateText = () => {
   const wordCount = 100;
   const selectedWords = [];
-  for (let i = 0; i < wordCount; i++) {
-    const randomIndex = Math.floor(Math.random() * words.length);
-    selectedWords.push(words[randomIndex]);
+
+  while (selectedWords.length < wordCount) {
+    const word = faker.lorem.word();
+
+    if (!word.includes("-") && word.length >= 4 && word.length <= 9) {
+      selectedWords.push(word);
+    }
   }
+
   return selectedWords.join(" ");
 };
 
@@ -32,7 +37,8 @@ const typingSlice = createSlice({
       state.errors += 1;
     },
     reset(state) {
-      state.userInput = generateText();
+      state.text = generateText();
+      state.userInput = "";
       state.startTime = null;
       state.errors = 0;
     },
