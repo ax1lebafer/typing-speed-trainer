@@ -4,3 +4,14 @@
   padding: 2rem;
   text-align: center;
 }
+
+.app {
+  text-align: center;
+  background-color: #323437;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.heading {
+  color: #aeb4bc;
+}
