@@ -6,9 +6,8 @@ import styles from "./Timer.module.css";
 
 export function Timer({ inputRef }) {
   const dispatch = useDispatch();
-  const { timeRemaining, isRunning, isFinished, wpm, errors } = useSelector(
-    (state) => state.typing
-  );
+  const { timeRemaining, isRunning, isFinished, wpm, errors, timer } =
+    useSelector((state) => state.typing);
 
   useEffect(() => {
     let timer;
@@ -50,11 +49,10 @@ export function Timer({ inputRef }) {
         className={styles.time}
         onChange={handleTimeSelect}
         disabled={isRunning}
+        value={timer}
       >
         <option value="15">15 секунд</option>
-        <option selected value="30">
-          30 секунд
-        </option>
+        <option value="30">30 секунд</option>
         <option value="60">60 секунд</option>
         <option value="120">120 секунд</option>
       </select>
