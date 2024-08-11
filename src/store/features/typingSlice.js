@@ -21,6 +21,11 @@ const initialState = {
   userInput: "",
   startTime: null,
   errors: 0,
+  wpm: 0,
+  timer: 30,
+  timeRemaining: 30,
+  isRunning: false,
+  isFinished: false,
 };
 
 const typingSlice = createSlice({
@@ -41,11 +46,42 @@ const typingSlice = createSlice({
       state.userInput = "";
       state.startTime = null;
       state.errors = 0;
+      state.timeRemaining = state.timer;
+      state.isRunning = false;
+      state.isFinished = false;
+      state.wpm = 0;
+    },
+    setTimer(state, action) {
+      state.timer = action.payload;
+      state.timeRemaining = action.payload;
+    },
+    startTimer(state) {
+      state.isRunning = true;
+    },
+    decrementTime(state) {
+      if (state.timeRemaining > 0) {
+        state.timeRemaining -= 1;
+      }
+      if (state.timeRemaining === 0) {
+        state.isRunning = false;
+        state.isFinished = true;
+
+        const wordsTyped = state.userInput.split(" ").length;
+        const minutes = state.timer / 60;
+        state.wpm = Math.round(wordsTyped / minutes);
+      }
     },
   },
 });
 
-export const { setUserInput, setStartTime, incrementErrors, reset } =
-  typingSlice.actions;
+export const {
+  setUserInput,
+  setStartTime,
+  incrementErrors,
+  reset,
+  setTimer,
+  startTimer,
+  decrementTime,
+} = typingSlice.actions;
 
 export default typingSlice.reducer;
