@@ -1,0 +1,10 @@
+.statisticsWrapper {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.text {
+    color: #646669;
+    font-size: 24px;
+}
