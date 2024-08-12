@@ -1,8 +1,20 @@
-# React + Vite
+# Typing Script Trainer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Проект задеплоен на https://ax1lebafer.github.io/typing-speed-trainer/
 
-Currently, two official plugins are available:
+# Как запустить проект
+- Установить зависимость командой npm i
+- Команда для запуска проекта npm run dev
+- Открыть проект в браузере
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Стек и инструменты
+- Проект сделан на React (Vite) используя JSX шаблоны. 
+- Для стилей в коде используются CSS Module. 
+- Все компоненты разбиты по отдельным папкам.
+
+# Функционал
+- В качестве глобального хранилища используется Redux Toolkit
+- Реализована генерация слов через библиотеку @faker-js
+- Дан выбор таймера: 15, 30, 90, 120 секунд
+- Рассчитывается кол-во слов в минуту, допущенные ошибки
+- После истечения таймера показывается статистика
